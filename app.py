@@ -1,5 +1,6 @@
 import heapq
 import os
+import pickle
 
 # Class Algo
 class Algo:
@@ -51,3 +52,31 @@ def bitstring_to_bytes(s):
 # Bytes to bitstring
 def bytes_to_bitstring(b):
    return ''.join(format(byte, '08b') for byte in b)
+
+
+# Compress file
+def compress_file(file_path):
+   with open(file_path, 'r') as file:
+       text = file.read()
+       tree = build_huffman_tree(text)
+       codes = create_codes(tree)
+       encoded_text = huffman_encoding(text, codes)
+       return encoded_text, tree, codes
+   
+
+# Decompress file
+def decompress_file(compressed_file_path):
+   with open(compressed_file_path, 'rb') as compressed_file:
+       b, tree, codes, padding = pickle.load(compressed_file)
+   
+   encoded_text = bytes_to_bitstring(b)[padding:]
+   
+   current_algo = tree
+   decoded_text = ''
+   for bit in encoded_text:
+       current_algo = current_algo.left if bit == '0' else current_algo.right
+       if current_algo.char is not None: # Leaf algo
+           decoded_text += current_algo.char
+           current_algo = tree # Return to the root for the next character
+   
+   return decoded_text
