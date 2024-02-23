@@ -27,3 +27,13 @@ def build_huffman_tree(text):
        heapq.heappush(priority_queue, merged)
    
    return priority_queue[0]
+
+
+# Create codes from Huffman Tree
+def create_codes(algo, current_code="", codes={}):
+   if algo is not None:
+       if algo.char is not None:
+           codes[algo.char] = current_code
+       codes = create_codes(algo.left, current_code + "0", codes)
+       codes = create_codes(algo.right, current_code + "1", codes)
+   return codes
