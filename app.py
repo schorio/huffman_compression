@@ -42,3 +42,12 @@ def create_codes(algo, current_code="", codes={}):
 # Encode text
 def huffman_encoding(text, codes):
    return ''.join(codes[char] for char in text)
+
+
+# Bitstring to bytes
+def bitstring_to_bytes(s):
+   return int(s, 2).to_bytes((len(s) + 7) // 8, byteorder='big')
+
+# Bytes to bitstring
+def bytes_to_bitstring(b):
+   return ''.join(format(byte, '08b') for byte in b)
