@@ -37,3 +37,8 @@ def create_codes(algo, current_code="", codes={}):
        codes = create_codes(algo.left, current_code + "0", codes)
        codes = create_codes(algo.right, current_code + "1", codes)
    return codes
+
+
+# Encode text
+def huffman_encoding(text, codes):
+   return ''.join(codes[char] for char in text)
