@@ -80,3 +80,14 @@ def decompress_file(compressed_file_path):
            current_algo = tree # Return to the root for the next character
    
    return decoded_text
+
+
+# Save compressed file
+def save_compressed_file(compressed_data, tree, codes, file_path):
+   padded_encoded_text = compressed_data
+   padding = 8 - (len(padded_encoded_text) % 8)
+   padded_encoded_text = "0" * padding + padded_encoded_text
+   b = bitstring_to_bytes(padded_encoded_text)
+   
+   with open(file_path, 'wb') as file:
+       pickle.dump((b, tree, codes, padding), file)
