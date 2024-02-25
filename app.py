@@ -94,6 +94,15 @@ def save_compressed_file(compressed_data, tree, codes, file_path):
    with open(file_path, 'wb') as file:
        pickle.dump((b, tree, codes, padding), file)
        
+
+# Save decompressed text to a file
+def save_decompressed_text(decompressed_text):
+   file_path = filedialog.asksaveasfilename(defaultextension=".txt",
+                                          filetypes=[("Text files", "*.txt")])
+   if file_path:
+       with open(file_path, 'w') as file:
+           file.write(decompressed_text)
+       
        
 # Compress button clicked
 def compress_button_clicked():
