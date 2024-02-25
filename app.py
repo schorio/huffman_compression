@@ -132,5 +132,9 @@ root.geometry("200x100")
 compress_button = ctk.CTkButton(root, text="Compresser un fichier", command=compress_button_clicked)
 decompress_button = ctk.CTkButton(root, text="decompresser un fichier", command=decompress_button_clicked)
 
+# Layout buttons
+compress_button.pack(expand=True)
+decompress_button.pack(expand=True)
+
 # Run application
 root.mainloop()
