@@ -115,6 +115,14 @@ def compress_button_clicked():
            save_compressed_file(compressed_data, tree, codes, output_file_path)
 
 
+# Decompress button clicked
+def decompress_button_clicked():
+   compressed_file_path = filedialog.askopenfilename(filetypes=[("Binary files", "*.bin")])
+   if compressed_file_path:
+       decompressed_text = decompress_file(compressed_file_path)
+       save_decompressed_text(decompressed_text)
+
+
 # Create main window
 root = ctk.CTk()
 root.title("Huffman Compression/Decompression")
@@ -122,6 +130,7 @@ root.geometry("200x100")
 
 # Create buttons
 compress_button = ctk.CTkButton(root, text="Compresser un fichier", command=compress_button_clicked)
+decompress_button = ctk.CTkButton(root, text="decompresser un fichier", command=decompress_button_clicked)
 
 # Run application
 root.mainloop()
