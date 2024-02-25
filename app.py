@@ -1,6 +1,7 @@
 import heapq
 import os
 import pickle
+import customtkinter as ctk
 
 # Class Algo
 class Algo:
@@ -91,3 +92,12 @@ def save_compressed_file(compressed_data, tree, codes, file_path):
    
    with open(file_path, 'wb') as file:
        pickle.dump((b, tree, codes, padding), file)
+
+
+# Create main window
+root = ctk.CTk()
+root.title("Huffman Compression/Decompression")
+root.geometry("200x100")
+
+# Run application
+root.mainloop()
