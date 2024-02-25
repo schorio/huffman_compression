@@ -2,6 +2,7 @@ import heapq
 import os
 import pickle
 import customtkinter as ctk
+from tkinter import filedialog
 
 # Class Algo
 class Algo:
@@ -92,12 +93,26 @@ def save_compressed_file(compressed_data, tree, codes, file_path):
    
    with open(file_path, 'wb') as file:
        pickle.dump((b, tree, codes, padding), file)
+       
+       
+# Compress button clicked
+def compress_button_clicked():
+   file_path = filedialog.askopenfilename()
+   if file_path:
+       compressed_data, tree, codes = compress_file(file_path)
+       output_file_path = filedialog.asksaveasfilename(defaultextension=".bin",
+                                                     filetypes=[("Binary files", "*.bin")])
+       if output_file_path:
+           save_compressed_file(compressed_data, tree, codes, output_file_path)
 
 
 # Create main window
 root = ctk.CTk()
 root.title("Huffman Compression/Decompression")
 root.geometry("200x100")
+
+# Create buttons
+compress_button = ctk.CTkButton(root, text="Compresser un fichier", command=compress_button_clicked)
 
 # Run application
 root.mainloop()
