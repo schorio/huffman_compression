@@ -112,7 +112,12 @@ def compress_button_clicked():
        output_file_path = filedialog.asksaveasfilename(defaultextension=".bin",
                                                      filetypes=[("Binary files", "*.bin")])
        if output_file_path:
-           save_compressed_file(compressed_data, tree, codes, output_file_path)
+        save_compressed_file(compressed_data, tree, codes, output_file_path)
+        
+        result = ctk.CTk()
+        result.title("Résultat")
+        result.geometry("250x50")
+        result.mainloop()
 
 
 # Decompress button clicked
@@ -127,6 +132,8 @@ def decompress_button_clicked():
 root = ctk.CTk()
 root.title("Huffman Compression/Decompression")
 root.geometry("200x100")
+
+
 
 # Create buttons
 compress_button = ctk.CTkButton(root, text="Compresser un fichier", command=compress_button_clicked)
