@@ -117,6 +117,8 @@ def compress_button_clicked():
         input_size = os.path.getsize(file_path)
         output_size = os.path.getsize(output_file_path)
         
+        taux = ((output_size / input_size) - 1) * 100
+        
         result = ctk.CTk()
         result.title("Résultat")
         result.geometry("250x50")
