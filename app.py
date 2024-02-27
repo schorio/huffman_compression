@@ -117,6 +117,8 @@ def compress_button_clicked():
         result = ctk.CTk()
         result.title("Résultat")
         result.geometry("250x50")
+        label = ctk.CTkLabel(result, text="affichage d'un texte")
+        label.pack()
         result.mainloop()
 
 
