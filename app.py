@@ -117,13 +117,13 @@ def compress_button_clicked():
         input_size = os.path.getsize(file_path)
         output_size = os.path.getsize(output_file_path)
         
-        taux = ((output_size / input_size) - 1) * 100
+        taux = (str(((output_size / input_size) - 1) * 100))[:6]
         
         result = ctk.CTk()
         result.title("Résultat")
         result.geometry("250x50")
-        label = ctk.CTkLabel(result, text="")
-        label.pack()
+        label = ctk.CTkLabel(result, text=f"Taux de compression : {taux} %")
+        label.pack(pady=10)
         result.mainloop()
 
 
