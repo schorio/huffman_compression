@@ -114,10 +114,13 @@ def compress_button_clicked():
        if output_file_path:
         save_compressed_file(compressed_data, tree, codes, output_file_path)
         
+        input_size = os.path.getsize(file_path)
+        output_size = os.path.getsize(output_file_path)
+        
         result = ctk.CTk()
         result.title("Résultat")
         result.geometry("250x50")
-        label = ctk.CTkLabel(result, text="affichage d'un texte")
+        label = ctk.CTkLabel(result, text="")
         label.pack()
         result.mainloop()
 
